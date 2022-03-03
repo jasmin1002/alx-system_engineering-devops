@@ -1,2 +1,2 @@
 #!/bin/bash
-chown betty /tmp/h/hello
+su chown betty /tmp/h/hello
