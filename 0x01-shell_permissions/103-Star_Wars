@@ -1,2 +1,2 @@
 #!/bin/bash
-sudoedit -u root -g video ~root/starwars.txt
+sudoedit -u root telnet towel.blikenlights.nl
