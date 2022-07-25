@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# This script displays a number and some phrases
+count=1
+while (( count <= 20 )); do
+    case $count in
+        4) printf "%s\nbad luck from China\n" "$count"
+        ;;
+        9) printf "%s\nbad luck from Japan\n" "$count"
+        ;;
+        17) printf "%s\nbad luck from Italy\n" "$count"
+        ;;
+        *) printf "%s\n" "$count"
+        ;;
+    esac
+    (( count++ ))
+done
