@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script demonstrates both while and if statement
+count=1
+while (( count <= 10));
+do
+if (( count == 9));
+then echo $'Best School\nHi'
+else echo "Best School"
+fi
+((count++))
+done
