@@ -1,2 +1,2 @@
 #!/usr/bin/env ruby
-puts ARGV[0].scan(/^h([a-zA-Z]|[0-9])n$/).join
+puts ARGV[0].scan(/\bh([a-z]|[0-9])n\b/).join
