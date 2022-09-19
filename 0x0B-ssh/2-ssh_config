@@ -25,16 +25,20 @@ CheckHostIP yes
 # ForwardX11Trusted yes
 # GatewayPorts no
 # GlobalKnownHostsFile
-  GSSAPIAuthentication no
+GSSAPIAuthentication no
 # GSSAPIKeyExchange no
 # GSSAPIClientIdentity no
 # GSSAPIDelegateCredentials no
 # GSSAPIRenewalForcesRekey no
-HashKnownHosts yes
-IdentityFile ~/.ssh/school
-PasswordAuthentication no
+# HashKnownHosts yes
+#
+Host Files
+	HostName 44.211.26.76
+	IdentityFile ~/.ssh/school
+	PasswordAuthentication no
 # Port 22
-# RSAAuthentication yes
+	RSAAuthentication yes
+	UserKnownHostsFile ~/.ssh/known_hosts
 # SendEnv LANG LC_*
 # TCPKeepAlive
-# User
+	User ubuntu
