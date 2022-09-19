@@ -32,13 +32,12 @@ Host *
 # GSSAPIRenewalForcesRekey no
 # HashKnownHosts yes
 #
-Host files
-	HostName 44.211.26.76
-	IdentityFile ~/.ssh/school
-	PasswordAuthentication no
+#HostName 44.211.84.220
+IdentityFile ~/.ssh/school
+PasswordAuthentication no
 # Port 22
-	RSAAuthentication yes
-	UserKnownHostsFile ~/.ssh/known_hosts
+RSAAuthentication yes
+UserKnownHostsFile ~/.ssh/known_hosts
 # SendEnv LANG LC_*
 # TCPKeepAlive
-	User ubuntu
+User ubuntu
