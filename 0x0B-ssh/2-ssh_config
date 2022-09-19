@@ -1,0 +1,40 @@
+# Obtains configuration data from the following order:
+#	1. Command-line options
+#	2. User's configuration file (~/.ssh/config)
+#	3. System-wide configuration file (/etc/ssh/ssh_config)
+#
+#
+Host *
+AddressFamily any
+# BatchMode no
+# ChallengeResponseAuthentication yes
+CheckHostIP yes
+# Cipher 3des
+# ClearAllForwardings no
+# Compression no
+# ConnectionAttempts 1
+# ConnectTimeout 10800
+# ControlMaster ask
+# ControlPath %h, %p, %r
+# EnableSSHKeysign no
+# DynamicForward *
+# EscapeChar
+# ExitOnForwardFailure no
+# ForwardAgent no
+# ForwardX11 no
+# ForwardX11Trusted yes
+# GatewayPorts no
+# GlobalKnownHostsFile
+  GSSAPIAuthentication no
+# GSSAPIKeyExchange no
+# GSSAPIClientIdentity no
+# GSSAPIDelegateCredentials no
+# GSSAPIRenewalForcesRekey no
+HashKnownHosts yes
+IdentityFile ~/.ssh/school
+PasswordAuthentication no
+# Port 22
+# RSAAuthentication yes
+# SendEnv LANG LC_*
+# TCPKeepAlive
+# User
