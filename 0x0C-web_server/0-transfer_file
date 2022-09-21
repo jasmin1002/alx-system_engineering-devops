@@ -1,1 +1,3 @@
+#!/usr/bin/env bash
+# Automate transfer of file from one source to destination
 scp -o StrictHostKeyChecking=no -i "$4" "$1" "$3@$2":~/.
