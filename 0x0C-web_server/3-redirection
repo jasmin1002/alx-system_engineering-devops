@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
-# automate redirection in nginx web server
-line="\t location /redirect_me {\n\t\t rewrite ^/redirect_me$ redirect\n\t\t}\n
+# Install nginx web server and then
+# redirect /redirect_me $request_uri
 
-sed -i "s/location //$line/" /etc/nginx/sites-available/default
+sudo apt update
+sudo apt install nginx -y
+sudo ufw allow 'Nginx HTTP'
+sudo echo 'Hello World' | sudo tee /var/www/html/index.html
+sudo sed -i '53 a location /redirect_me { return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;}' /etc/nginx/sites-available/default
+sudo service nginx start
+
