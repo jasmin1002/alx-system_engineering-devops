@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# automate redirection in nginx web server
+line="\t location /redirect_me {\n\t\t rewrite ^/redirect_me$ redirect\n\t\t}\n
+
+sed -i "s/location //$line/" /etc/nginx/sites-available/default
