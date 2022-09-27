@@ -1,7 +1,9 @@
 # Nginx configuration: header customization
 
-file_line {'Customize response header':
-  ensure => 'present',
-  path   => '/etc/nginx/nginx.conf',
-  line   => 'add_header X-Served-By $hostname',
+exec {'Customize response header':
+  command  => 'sudo apt update;
+  sudo apt -y install nginx;
+  sed -i "16 a \\\tadd_header X-Served-By \$hostname;" /etc/nginx/nginx.conf;
+  sudo service nginx restart',
+  provider => 'shell',
 }
