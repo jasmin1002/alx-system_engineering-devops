@@ -1,14 +1,20 @@
 #!/usr/bin/env bash
 # Script prints details of domain and subdomain
-if [ $# -gt 1 ]; then
-	subdomains=($2)
-else
-	subdomains=(www lb-01 web-01 web-02)
-fi
 
-for subdomain in ${subdomains[@]}; do
-	entry=$(dig +nocmd $subdomain.$1 +noall +answer)
-	dns_record=$(echo $entry | awk '{print $4}')
-	dest=$(echo $entry | awk '{print $5}')
-	echo "The subdomain $subdomain is a $dns_record and points to $dest"
-done
+print_domain()
+{
+	if [ $# -gt 1 ]; then
+		subdomains=($2)
+	else
+		subdomains=(www lb-01 web-01 web-02)
+	fi
+
+	for subdomain in ${subdomains[@]}; do
+		entry=$(dig +nocmd $subdomain.$1 +noall +answer)
+		dns_record=$(echo $entry | awk '{print $4}')
+		dest=$(echo $entry | awk '{print $5}')
+		echo "The subdomain $subdomain is a $dns_record and points to $dest"
+	done
+}
+
+print_domain $1 $2
