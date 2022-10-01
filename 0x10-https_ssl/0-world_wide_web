@@ -8,7 +8,7 @@ fi
 
 for subdomain in ${subdomains[@]}; do
 	entry=$(dig +nocmd $subdomain.$1 +noall +answer)
-	dns_record=$(echo $entry | awk -F " " '{print $4}')
-	dest=$(echo $entry | awk -F " " '{print $5}')
+	dns_record=$(echo $entry | awk '{print $4}')
+	dest=$(echo $entry | awk '{print $5}')
 	echo "The subdomain $subdomain is a $dns_record and points to $dest"
 done
