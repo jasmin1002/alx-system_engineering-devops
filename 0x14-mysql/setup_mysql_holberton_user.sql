@@ -4,4 +4,4 @@
 CREATE USER IF NOT EXISTS 'holberton_user'@'localhost' IDENTIFIED BY 'projectcorrection280hbtn';
 
 -- Grant permission for holberton_user
-GRANT REPLICATION CLIENT ON *.* 'holberton_user'@'localhost';
+GRANT REPLICATION CLIENT ON *.* TO 'holberton_user'@'localhost';
