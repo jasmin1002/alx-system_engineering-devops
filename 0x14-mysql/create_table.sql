@@ -14,5 +14,17 @@ CREATE TABLE IF NOT EXISTS nexus6 (
 -- Insert a new row in the table nexus6
 INSERT INTO nexus6 (name) VALUES('Leon');
 
--- Grant Select permission to holberton_user
+-- Create a new user with following credential:
+-- username => replica_user
+-- hostname => %
+-- password => password
+CREATE USER IF NOT EXISTS 'replica_user'@'%' IDENTIFIED BY 'password';
+
+-- Grant appropriate permissions to replica_user
+GRANT REPLICATION SLAVE ON *.* TO 'replica_user'@'%';
+
+-- Grant Select permission to holberton_user ON all tables of tyrell_corp
 GRANT SELECT ON tyrell_corp.* TO 'holberton_user'@'localhost';
+
+-- Grant SELECT permission to holberton_user ON user table of mysql database
+GRANT SELECT ON mysql.user TO 'holberton_user'@'localhost';
