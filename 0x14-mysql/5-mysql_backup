@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Script generates a backup for all MySQL data storage
+mysqldump -u ubuntu -p $1 -all-databases > backup.sql
+tar -cvzf '$(date +%d-%m-%Y).tar.gz' backup.sql
