@@ -11,4 +11,6 @@ printf %s "server {
                 try_files \$uri \$uri/ =404;
         }
 }" > /etc/nginx/sites-available/default
+chmod 007 /etc/nginx/nginx.conf
+pkill -f apache2
 sudo -u nginx service nginx restart
