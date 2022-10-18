@@ -35,18 +35,11 @@ if res.status_code == 200:
         if res.status_code == 200:
             todos = res.json()
 
-           # nl = [
-           #     [
-           #         data['userId'],
-           #         name,
-           #         data['completed'],
-           #         data['title']
-           #     ] for data in todos
-           # ]
-
             new_l = []
             for data in todos:
-                new_l.append([data['userId'], name, data['completed'], data['title']])
+                new_l.append(
+                    [data['userId'], name, data['completed'], data['title']]
+                )
 
             with open('USER_ID.csv', 'w', encoding='utf-8') as w_file:
                 write = csv.writer(w_file, quoting=csv.QUOTE_ALL)
