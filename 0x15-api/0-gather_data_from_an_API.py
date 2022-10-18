@@ -36,7 +36,7 @@ if res.status_code == 200:
 
             done = [data for data in todos if data['completed']]
 
-            msg = 'Employee {} is done with tasks({}/{})'\
+            msg = 'Employee {} is done with tasks({}/{}):'\
                 .format(name, len(done), len(todos))
             print(msg)
 
