@@ -25,7 +25,7 @@ if res.status_code == 200:
 
     for user in users:
         if str(user.get('id')) == id:
-            name = user['name']
+            name = user['username']
             break
 
     if name:
