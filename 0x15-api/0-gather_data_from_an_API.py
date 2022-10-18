@@ -1,49 +1,66 @@
 #!/usr/bin/python3
 '''
-Documentation goes here
+TODOS management application
 '''
 
 import requests
 from sys import argv
 
-try:
-    id = argv[1]
-except IndexError:
-    print('Require employee\'s ID but none')
+if __name__ == '__main__':
+    def print_todos_detail(id):
+        '''
+        fetch_todos function prints detail information
+        about assigned tasks
 
-domain = 'https://jsonplaceholder.typicode.com'
-todos = 'todos'
-users = 'users'
-user_id = {'userId': id}
-url_s = '{}/{}'.format(domain, users)
-res = requests.get(url_s)
+        Args:
+            id (int): Stores user id
 
-if res.status_code == 200:
-    users = res.json()
-    name = ''
+        Return:
+            return None
+        '''
 
-    for user in users:
-        if str(user.get('id')) == id:
-            name = user['name']
-            break
+        #: str: Stores resource location
+        domain = 'https://jsonplaceholder.typicode.com'
 
-    if name:
-        url_t = '{}/{}'.format(domain, todos)
-        res = requests.get(url_t, params=user_id)
+        #: obj of str: Stores services to consume
+        endpoints = {'users': 'users', 'todos': 'todos'}
 
+        #: str: url
+        url = '{}/{}'.format(domain, endpoints['users'])
+
+        #: obj of int: Stores query parameter
+        user_id = {'userId': id}
+        name = ''
+
+        res = requests.get(url + '/' + user_id['userId'])
         if res.status_code == 200:
-            todos = res.json()
-
-            done = [data for data in todos if data['completed']]
-
-            msg = 'Employee {} is done with tasks({}/{}):'\
-                .format(name, len(done), len(todos))
-            print(msg)
-
-            for completed in done:
-                msg = '\t {}'.format(completed['title'])
-                print(msg)
+            name = res.json()['name']
         else:
             print(res.status_code)
-else:
-    print(res.status_code)
+
+        if not name:
+            print('User\'s name not found')
+        else:
+            url = '{}/{}'.format(domain, endpoints['todos'])
+            res = requests.get(url, params=user_id)
+
+            if res.status_code == 200:
+                todos = res.json()
+                completed = [
+                    todo for todo in todos if todo['completed']
+                ]
+
+                msg = 'Employee {} is done with tasks({}/{}):'\
+                    .format(name, len(completed), len(todos))
+                print(msg)
+
+                for done in completed:
+                    msg = '\t {}'.format(done['title'])
+                    print(msg)
+
+    try:
+        id = argv[1]
+    except IndexError:
+        print('Require employee\'s ID but not found')
+    else:
+        print_todos_detail(id)
